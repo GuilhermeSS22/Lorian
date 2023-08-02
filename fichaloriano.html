@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="fichagg.css" />
+
+    <title>Lorian Muto</title>
+  </head>
+  <body>
+    <ul class="nav">
+      <li><a class="nava" href="index.html">Início</a></li>
+      <li style="float:right" class="active"><a class="nava" href="fichaloriano.html">Ficha</a></li>
+      <li><a class="nava" href="contact.asp">Mesa</a></li>
+      <li><a href="codice.html">Códice</a>
+        <ul class="subnav">
+          <li><a href=status.html>Status</a></li>
+          <li><a href="npc">Npc's</a> </li>
+          <li><a href="mecanicas.html">Mecânicas</a></li>
+          <li><a href="bestiario">Bestiário</a></li>
+          <li><a href="elemental.html">elemental mistake</a></li>
+      </ul></li>
+      <li><a class="nava" href="about.asp">Mapa</a></li>
+      <li><a class="nava" href="about.asp">Lojas</a></li>
+      <li><a class="nava" href="about.asp">Jornal</a></li>
+    </ul>
+    <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <h1 class="title">Lorian Muto</h1>
+
+    <!-- modal -->
+    <div id="diceAttributes" class="modal">
+      <div class="modal-content">
+        <img class="modalDice" src="./img/dado.png" alt="Dado" />
+        <h2 id="diceNumber"></h2>
+        <p id="diceType"></p>
+      </div>
+    </div>
+
+    <div id="lifeModal" class="modal with-input">
+      <div class="modal-content">
+        <h2>MODIFICAR VIDA</h2>
+        <hr />
+        <form class="formModal" id="changeLife">
+          <h3>Atual</h3>
+          <input type="number" name="current" id="lifeCurrent" min="0" />
+          <h3>Máximo</h3>
+          <input type="number" name="max" id="lifeMax" min="0" />
+          <input type="submit" value="Salvar" />
+        </form>
+      </div>
+    </div>
+
+    <div id="sanityModal" class="modal with-input">
+      <div class="modal-content">
+        <h2>MODIFICAR MANA</h2>
+        <hr />
+        <form class="formModal" id="changeSanity">
+          <h3>Atual</h3>
+          <input
+            type="number"
+            name="sanityCurrent"
+            id="sanityCurrent"
+            min="0"
+          />
+          <h3>Máximo</h3>
+          <input type="number" name="sanityMax" id="sanityMax" min="0" />
+          <input type="submit" value="Salvar" />
+        </form>
+      </div>
+    </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="details border">
+        <h2 class="grid-title">DETALHES PESSOAIS</h2>
+        <hr />
+
+        <div class="inputs">
+          <h4>Crystal coin</h4>
+          <input type="text" name="cristal" id="cristal" value="" />
+          <h4>Estrelas</h4>
+          <input type="text" name="star" id="star" value="" />
+          <h4>Classe</h4>
+          <input type="text" name="classe" id="classe" value="" />
+          <h4>Nível</h4>
+          <input type="text" name="level" id="level" value="" />
+          <h4>Idade</h4>
+          <input type="text" name="age" id="age" value="" />
+          <h4>Sexo</h4>
+          <select id="sex" name="sex">
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+            <option value="other">Outros</option>
+          </select>
+          <br>
+          <h2>Alma</h2>
+          <br>
+          <h3>Cor da alma: Preto</h3>
+          <h4>Habilidade</h4>
+          <br>
+          <h3>Cor da alma: Vermelho</h3>
+          <h4>Habilidade</h4>
+          <br>
+          <br>
+          <img src="imagens/soul1.png" class="imgsoul">
+          <h2>Soul resonance</h2>
+          <br>
+          <h4>Passiva:</h4>
+          <br>
+          <h4>Ativa:</h4>
+          <h2>Runas</h2>
+          <br>
+          <img class="runaimg" src="imagens/Rune_slots.webp"/>
+          <br>
+          <h4>1: <select id="rune" name="rune">
+            <option value="none">Nenhuma</option>
+            <option value="accuracy">accuracy</option>
+            <option value="blade">Blade</option>
+            <option value="despair">Despair</option>
+            <option value="destroy">Destroy</option>
+            <option value="determination">Determi nation</option>
+            <option value="enchance">Enchance</option>
+            <option value="endure">Endure</option>
+            <option value="energy">Energy</option>
+            <option value="fatal">Fatal</option>
+            <option value="fight">Fight</option>
+            <option value="focus">Focus</option>
+            <option value="guard">Guard</option>
+            <option value="nemesis">Nemesis</option>
+            <option value="Rage">Rage</option>
+            <option value="revenge">Revenge</option>
+            <option value="shield">Shield</option>
+            <option value="swift">Swift</option>
+            <option value="tolerance">Tolerance</option>
+            <option value="violent">Violent</option>
+            <option value="will">Will</option>
+          </select> | <select id="at" name="at"><option value="none">Nenhuma</option>
+            <option value="dmg1">DMG'A</option><option value="dmg1c">DMG'A%</option>
+            <option value="dmg2">DMG'H</option>
+            <option value="dmg2c">DMG'H%</option>
+            <option value="dmg3">DMG'T</option>
+            <option value="dmg3c">DMG'T%</option>
+            <option value="hp">HP</option>
+            <option value="hpc">HP%</option>
+            <option value="mp">MP</option>
+            <option value="mpc">MP%</option>
+            <option value="sort">Sort</option>
+            <option value="sortc">Sort%</option>
+        </select> + <input class="run" type="text" name="run1" id="run1" value="" /></h4>
+        <h4>2: <select id="rune" name="rune">
+            <option value="none">Nenhuma</option>
+            <option value="accuracy">accuracy</option>
+            <option value="blade">Blade</option>
+            <option value="despair">Despair</option>
+            <option value="destroy">Destroy</option>
+            <option value="determination">Determi nation</option>
+            <option value="enchance">Enchance</option>
+            <option value="endure">Endure</option>
+            <option value="energy">Energy</option>
+            <option value="fatal">Fatal</option>
+            <option value="fight">Fight</option>
+            <option value="focus">Focus</option>
+            <option value="guard">Guard</option>
+            <option value="nemesis">Nemesis</option>
+            <option value="Rage">Rage</option>
+            <option value="revenge">Revenge</option>
+            <option value="shield">Shield</option>
+            <option value="swift">Swift</option>
+            <option value="tolerance">Tolerance</option>
+            <option value="violent">Violent</option>
+            <option value="will">Will</option>
+          </select> | <select id="at" name="at"><option value="none">Nenhuma</option>
+            <option value="dmg1">DMG'A</option><option value="dmg1c">DMG'A%</option>
+            <option value="dmg2">DMG'H</option>
+            <option value="dmg2c">DMG'H%</option>
+            <option value="dmg3">DMG'T</option>
+            <option value="dmg3c">DMG'T%</option>
+            <option value="hp">HP</option>
+            <option value="hpc">HP%</option>
+            <option value="mp">MP</option>
+            <option value="mpc">MP%</option>
+            <option value="sort">Sort</option>
+            <option value="sortc">Sort%</option>
+        </select> + <input class="run" type="text" name="run2" id="run2" value="" /></h4>
+        <h4>3: <select id="rune" name="rune">
+            <option value="none">Nenhuma</option>
+            <option value="accuracy">accuracy</option>
+            <option value="blade">Blade</option>
+            <option value="despair">Despair</option>
+            <option value="destroy">Destroy</option>
+            <option value="determination">Determi nation</option>
+            <option value="enchance">Enchance</option>
+            <option value="endure">Endure</option>
+            <option value="energy">Energy</option>
+            <option value="fatal">Fatal</option>
+            <option value="fight">Fight</option>
+            <option value="focus">Focus</option>
+            <option value="guard">Guard</option>
+            <option value="nemesis">Nemesis</option>
+            <option value="Rage">Rage</option>
+            <option value="revenge">Revenge</option>
+            <option value="shield">Shield</option>
+            <option value="swift">Swift</option>
+            <option value="tolerance">Tolerance</option>
+            <option value="violent">Violent</option>
+            <option value="will">Will</option>
+          </select> | <select id="at" name="at"><option value="none">Nenhuma</option>
+            <option value="dmg1">DMG'A</option><option value="dmg1c">DMG'A%</option>
+            <option value="dmg2">DMG'H</option>
+            <option value="dmg2c">DMG'H%</option>
+            <option value="dmg3">DMG'T</option>
+            <option value="dmg3c">DMG'T%</option>
+            <option value="hp">HP</option>
+            <option value="hpc">HP%</option>
+            <option value="mp">MP</option>
+            <option value="mpc">MP%</option>
+            <option value="sort">Sort</option>
+            <option value="sortc">Sort%</option>
+        </select> + <input class="run" type="text" name="run3" id="run3" value="" /></h4>
+        <h4>4: <select id="rune" name="rune">
+            <option value="none">Nenhuma</option>
+            <option value="accuracy">accuracy</option>
+            <option value="blade">Blade</option>
+            <option value="despair">Despair</option>
+            <option value="destroy">Destroy</option>
+            <option value="determination">Determi nation</option>
+            <option value="enchance">Enchance</option>
+            <option value="endure">Endure</option>
+            <option value="energy">Energy</option>
+            <option value="fatal">Fatal</option>
+            <option value="fight">Fight</option>
+            <option value="focus">Focus</option>
+            <option value="guard">Guard</option>
+            <option value="nemesis">Nemesis</option>
+            <option value="Rage">Rage</option>
+            <option value="revenge">Revenge</option>
+            <option value="shield">Shield</option>
+            <option value="swift">Swift</option>
+            <option value="tolerance">Tolerance</option>
+            <option value="violent">Violent</option>
+            <option value="will">Will</option>
+          </select> | <select id="at" name="at"><option value="none">Nenhuma</option>
+            <option value="dmg1">DMG'A</option><option value="dmg1c">DMG'A%</option>
+            <option value="dmg2">DMG'H</option>
+            <option value="dmg2c">DMG'H%</option>
+            <option value="dmg3">DMG'T</option>
+            <option value="dmg3c">DMG'T%</option>
+            <option value="hp">HP</option>
+            <option value="hpc">HP%</option>
+            <option value="mp">MP</option>
+            <option value="mpc">MP%</option>
+            <option value="sort">Sort</option>
+            <option value="sortc">Sort%</option>
+        </select> + <input class="run" type="text" name="run4" id="run4" value="" /></h4>
+        <h4>5: <select id="rune" name="rune">
+            <option value="none">Nenhuma</option>
+            <option value="accuracy">accuracy</option>
+            <option value="blade">Blade</option>
+            <option value="despair">Despair</option>
+            <option value="destroy">Destroy</option>
+            <option value="determination">Determi nation</option>
+            <option value="enchance">Enchance</option>
+            <option value="endure">Endure</option>
+            <option value="energy">Energy</option>
+            <option value="fatal">Fatal</option>
+            <option value="fight">Fight</option>
+            <option value="focus">Focus</option>
+            <option value="guard">Guard</option>
+            <option value="nemesis">Nemesis</option>
+            <option value="Rage">Rage</option>
+            <option value="revenge">Revenge</option>
+            <option value="shield">Shield</option>
+            <option value="swift">Swift</option>
+            <option value="tolerance">Tolerance</option>
+            <option value="violent">Violent</option>
+            <option value="will">Will</option>
+          </select> | <select id="at" name="at"><option value="none">Nenhuma</option>
+            <option value="dmg1">DMG'A</option><option value="dmg1c">DMG'A%</option>
+            <option value="dmg2">DMG'H</option>
+            <option value="dmg2c">DMG'H%</option>
+            <option value="dmg3">DMG'T</option>
+            <option value="dmg3c">DMG'T%</option>
+            <option value="hp">HP</option>
+            <option value="hpc">HP%</option>
+            <option value="mp">MP</option>
+            <option value="mpc">MP%</option>
+            <option value="sort">Sort</option>
+            <option value="sortc">Sort%</option>
+        </select> + <input class="run" type="text" name="run5" id="run5" value="" /></h4>
+        <h4>6: <select id="rune" name="rune">
+            <option value="none">Nenhuma</option>
+            <option value="accuracy">accuracy</option>
+            <option value="blade">Blade</option>
+            <option value="despair">Despair</option>
+            <option value="destroy">Destroy</option>
+            <option value="determination">Determi nation</option>
+            <option value="enchance">Enchance</option>
+            <option value="endure">Endure</option>
+            <option value="energy">Energy</option>
+            <option value="fatal">Fatal</option>
+            <option value="fight">Fight</option>
+            <option value="focus">Focus</option>
+            <option value="guard">Guard</option>
+            <option value="nemesis">Nemesis</option>
+            <option value="Rage">Rage</option>
+            <option value="revenge">Revenge</option>
+            <option value="shield">Shield</option>
+            <option value="swift">Swift</option>
+            <option value="tolerance">Tolerance</option>
+            <option value="violent">Violent</option>
+            <option value="will">Will</option>
+          </select> | <select id="at" name="at"><option value="none">Nenhuma</option>
+            <option value="dmg1">DMG'A</option><option value="dmg1c">DMG'A%</option>
+            <option value="dmg2">DMG'H</option>
+            <option value="dmg2c">DMG'H%</option>
+            <option value="dmg3">DMG'T</option>
+            <option value="dmg3c">DMG'T%</option>
+            <option value="hp">HP</option>
+            <option value="hpc">HP%</option>
+            <option value="mp">MP</option>
+            <option value="mpc">MP%</option>
+            <option value="sort">Sort</option>
+            <option value="sortc">Sort%</option>
+        </select> + <input class="run" type="text" name="run6" id="run6" value="" /></h4>
+        <div>
+            <h2 class="grid-title">Resistências</h2>
+            <div class="resList" id="resList">
+                <br>
+                <table border="1" class="res">
+                    <tr>
+                        <img src="imagens/fogo5.png" class="imgresfo">
+                          <td class="elem">Ígneo</td>
+                        <img src="imagens/agua4.png" class="imgresag">
+                        <td class="elem">Hydro</td>
+                        <img src="imagens/sagrado2.webp" class="imgressag" id="open-modal3">
+                        <td class="elem">Sagrado</td>
+                        <img src="imagens/morte11.png" class="imgresmor" id="open-modal4">
+                        <td class="elem">Morte</td>
+                    </tr>
+                    <tr>
+                        <td>-25%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>-50%</td>
+                    </tr>
+                    </table>
+                    <table>
+                    <tr>
+                        <img src="imagens/fisico.png" class="imgresfis" id="open-modal5">
+                        <td class="elem">Físico</td>
+                        <img src="imagens/veneno.png" class="imgresven" id="open-modal6">
+                        <td 
+                        class="elem">Veneno</td>
+                        <img src="imagens/eterio.png" class="imgresete" id="open-modal7">
+                        <td class="elem">Etério</td>
+                        <img src="imagens/eletrico.png" class="imgresele" id="open-modal8">
+                        <td class="elem">Elétrico</td>
+                    </tr>
+                    <tr>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+                    </table>
+                    <table>
+                    <tr>
+                        <img src="imagens/sombra.png" class="imgressom" id="open-modal9">
+                        <td class="elem">Sombra</td>
+                        <img src="imagens/luz.png" class="imgresluz" id="open-modal10">
+                        <td class="elem">Luz</td>
+                        <img src="imagens/psiquico.png" class="imgrespsi" id="open-modal11">
+                        <td class="elem">Psíquico</td>
+                        <img src="imagens/espiritual.png" class="imgresesp" id="open-modal12">
+                        <td class="elem">Espiritual</td>
+                    </tr>
+                    <tr>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+                </table>
+                <br>
+                <br>
+                
+                <div class="carrossel owl-carousel">
+                  <div class="conquista">
+                      <div class="conquistaCaixa">
+                        <br><br>
+                        <h2>Habilidades</h2>
+                        <br>
+                        <button onclick="leiaMais1()" id="btnLeiaMais1" class="btnLeiaMais1">Geas</button>
+                        <span id="tresPontos1"></span><span id="mostrarMais1" class="hability"><br><br>O olho de Lorian se torna roxo por alguns instantes, recebendo a capacidade de dar <strong>uma</strong> ordem para qualquer pessoa, e ela terá de realiza-la.<br>
+                          Rank: S
+                          <br>
+                        <br><p class="habilitysec">Passiva</p></span>
+                        <hr/>
+                        <button onclick="leiaMais2()" id="btnLeiaMais2" class="btnLeiaMais2">Manipulação de mana</button>
+                <span id="tresPontos2"></span><span id="mostrarMais2" class="hability"><br><br>Pode controlar a sua mana livremente em qualquer estado.<br>
+                  Rank: D
+                <br><br><p class="habilitysec">Passiva</p></span>
+                <hr/>
+                <button onclick="leiaMais3()" id="btnLeiaMais3" class="btnLeiaMais3">Coração das cartas</button>
+              <span id="tresPontos3"></span><span id="mostrarMais3" class="hability"><br><br>A habilidade que envolve "sorte", traz a tona o que precisa em um momento certo.
+                <br>
+                Rank: C
+                <br><br><p class="habilitysec">Passiva</p></span>
+              <hr/>
+              <button onclick="leiaMais4()" id="btnLeiaMais4" class="btnLeiaMais4">Back in black</button>
+            <span id="tresPontos4"></span><span id="mostrarMais4" class="hability"><br><br>O stand consegue tornar as coisas pretas. Com isso há algumas possibilidades, são elas:<br><br>
+              Voltar ao preto:<br>
+              Efeito: Torna qualquer coisa no alcance em preto, retirando a sua essencia e a tornando algo genérico e misterioso.<br><br>
+              Black blink:<br>
+              Efeito: Quase que instantâneamente viaja para uma dimensão negra na qual é possivel interagir com qualquer coisa sem quaisquer complicações, podendo ter uma prévia de alguma coisa. Entretanto tudo usado na black door tudo o que acontece lá fica por lá.<br><br>
+              Imperador negro:<br>
+              Efeito: Pode "Controlar" as coisas que forem pretas, para tal deve haver um preparo.<br><br>
+              Felcha pecaminosa:<br>
+              Efeito: A flecha continha um poder sombrio misterioso, as mãos de uma bruxa agarraram seu desetino. Se usar seu poder para mudar o destino de algo, você sofre o efeito de uma maldição. Se for ativado muitas vezes causa morte irreversivel.<br><br>
+              <p class="habilitysec">ativa</p></span>
+              <hr/>
+              <button onclick="leiaMais5()" id="btnLeiaMais5" class="btnLeiaMais5">Glapinir</button>
+            <span id="tresPontos5"></span><span id="mostrarMais5" class="hability"><br><br>A glapinir é uma espécie de lança feita de energia pura, tão bem que se fosse visto de primeira mão diriam que é uma arma forjada com algum metal negro verídico. A glapinir pode assumir qualquer elemento, os status da glapinir são (+40 em maestria quando usada e possui um custo de 50) possui algumas variações de ataques, são elas:<br><br>
+              Mil lanças:<br>
+              Efeito: Arremessa múltiplas lanças na direção do inímigo de uma só vez.<br>
+              Dano: 350% do P.M<br>
+              Custo: 200<br>
+              RanK: B<br>
+              <p class="habilitysec">ativa</p></span>
+              <hr/>
+              <button onclick="leiaMais6()" id="btnLeiaMais6" class="btnLeiaMais6">Mundo das trevas</button>
+              <span id="tresPontos6"></span><span id="mostrarMais6" class="hability"><br><br>Pode invocar o poder do mundo das trevas depois que um duelo inicia, sua vida  volta para 4.000 e sua mana desaparece. Além disso pode invocar o mundo das trevas para oficializar acordos.
+                <br><br>
+                Rank: S
+                <br><br><p class="habilitysec">Passiva</p></span>
+              <hr/>
+                      </div>
+                  </div>
+        </div>
+            </div>
+          </div>
+
+        
+        </div>
+      </div>
+      <div class="character">
+        <div class="characterHeader">
+          
+        </div>
+
+        <div class="bars">
+          <h4>Vida</h4>
+          <div class="bar">
+            <div class="lifeBar" style="width: 0%">
+              <p class="barcount" id="lifeCount"></p>
+            </div>
+          </div>
+
+          <h4>Mana</h4>
+          <div class="sanity">
+            <div class="contentSanityBar">
+              <div class="sanityBar" style="width: 0%">
+                <p class="barcount" id="sanityCount"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+<br>
+      <div class="attributes border">
+        <h2 class="grid-title">ATRIBUTOS</h2>
+        <hr />
+
+        <div class="attributesList" id="attributesList"></div>
+      </div>
+      <br>
+      <div class="expertise border">
+        <br>
+        <h2>C.A</h2>
+        <hr />
+        <br>
+        <table border="1" class="ca">
+            <tr>
+                <img src="imagens/esquiva.png" class="imgresqui">
+                <td class="caat">Esquiva: 45</td>
+                <img src="imagens/bloqueio.png" class="imgbloq">
+                <td class="caat">Bloqueio: 45</td>
+            </tr>
+            <tr>
+                <td>Bônus extra: 0</td>
+                <td>Armadura Extra: 0</td>
+            </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <h2>Velocidade</h2>
+            <hr >
+            <br>
+            <table border="1" class="speed">
+              <tr>
+                  <img src="imagens/corrida.png" class="imgspeed">
+                  <td class="verozidade">Velocidade: 145</td>
+                  <img src="imagens/Zona" class="imgzona">
+                  <td class="verozidade">Zona: curta </td>
+              </tr>
+              </table>
+      </div>
+      <br>
+      <br>
+      <div class="expertise border">
+        <br>
+        <h2>Maestria</h2>
+        <hr />
+        <br>
+        <table class="maesp">
+          <tr>
+              <img src="imagens/machado.png" class="imgmaesal">
+              <td class="maes">Arma longa</td>
+              <img src="imagens/faca.png" class="imgmaesac">
+              <td 
+              class="maes">Arma curta</td>
+              <img src="imagens/soco.png" class="imgmaesfis">
+              <td class="maes">Físico</td>
+          </tr>
+          <tr>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+          </tr>
+          </table>
+          <br>
+          <table class="maesp">
+          <tr>
+              <img src="imagens/pistole.png" class="imgmaesaf">
+              <td class="maes">Arma de fogo</td>
+              <img src="imagens/arco.png" class="imgmaesaa">
+              <td class="maes">Arma arcaica</td>
+              <img src="imagens/lança.png" class="imgmaeslan">
+              <td class="maes">Lança</td>
+          </tr>
+          <tr>
+              <td>25</td>
+              <td>0</td>
+              <td>0</td>
+          </tr>
+      </table>
+      <br>
+      <table class="maesp">
+        <tr>
+            <img src="imagens/cana.png" class="imgmaesaf">
+            <td class="maes">Canalizador</td>
+            <img src="imagens/gadanha1.png" class="imgmaesaa">
+            <td class="maes">Gadanhas</td>
+            <img src="imagens/pecu.png" class="imgmaeslan">
+            <td class="maes">Peculiaridade</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>125</td>
+        </tr>
+    </table>
+      </div>
+      <br>
+      <div class="border" id="bens">
+        <div class="combatHeader" >
+          <h2 class="grid-title">Bençãos</h2>
+        </div>
+        <hr />
+        <br>
+        <button onclick="leiaMais1a()" id="btnLeiaMais1a" class="btnLeiaMais">Instinto dracônico</button>
+                  <span id="tresPontos1a"></span><span id="mostrarMais1a" class="bens"><br><br>Recebe +10% de P.M, Consegue sentir e rastrear dragões,<br> consegue identificar a tipologia/elemento da mana de qualquer<br> um, bem como suas fraquezas, aumenta a raio de visão.<br>
+                  <br></span>
+                  <hr/>
+                 <button onclick="leiaMais2a()" id="btnLeiaMais2a" class="btnLeiaMais">O Verdadeiro rei</button>
+                  <span id="tresPontos2a"></span><span id="mostrarMais2a" class="bens"><br><br> Voce que dita as ordens. Com essa benção voce pode sobrepor<br> ordens fracas com uma ordem mais fortes, como transformar<br> um "pegue uma chave" para um " pegue a chave AGORA",<br> ou "como me mande me morder" para "Eu NUNCA serei controlado". Em outras palavras, a frase de controle mais forte<br> que ganha.<br>
+                  <br></span>
+                  <hr/>
+                  <button onclick="leiaMais3a()" id="btnLeiaMais3a" class="btnLeiaMais">O real da mana</button>
+                  <span id="tresPontos3a"></span><span id="mostrarMais3a" class="bens"><br><br> Tudo aquilo que foi criado com a mana pode ser um objeto<br> físico veridico e deixar de ser apenas uma cópia de mana.<br> Objetos que se tornaram veridicos não podem voltar ao estado<br> de mana, portanto não podem sofrer alterações. Como uma<br> benção amaldiçoada, ela não pode ser sobreposta por deuses menores, mas lhe deixa uma marca conhecida como ligação demoníaca. Todos os ítens criados por voce estão em ligação demoníaca com voce e de tempos em tempos lhe exigirão um<br> custo de mana para que possam existir. além disso se um ítem<br> tiver à uma grande distância de voce eles desaperecem depois<br> de um certo período. O custo de mana de um ítem e o tempo<br> que ele poderá perpetuar longe de voce depende da força de<br> seus ítens e objetos:<br><Br>
+                    Ítem fraco: Não desaparece quando em distâncias grandes e<br> não lhe custa nada para existir.<Br><Br>
+                    Ítem médio: Seu valor é sempre de 50% de seu PM para<br> qualquer coisa, seja dureza ou dano, e sempre quando em<br> distâncias longas tende a desaparecer. Seu custo é de 5% de<br> mana por turno e 10% por mesa para RP.<Br><Br>
+                    Ítem forte: Seu valor é sempre 100% de seu PM para qualquer<br> coisa, seja dureza ou dano, se sempre quando em distâncias<br> médias tende a desaparecer. Seu custo é de 10% de mana por<br> turno e 20% por mesa para RP. 
+                  <br></span>
+                  <hr/>
+                  <button onclick="leiaMais4a()" id="btnLeiaMais4a" class="btnLeiaMais">Onde o coração desejar</button>
+                  <span id="tresPontos4a"></span><span id="mostrarMais4a" class="bens"><br><br> Faz com que seja teletransportado para qualquer lugar que<br> deseje apenas sabendo seu nome ofícial, ao custo de um tempo proporcional a distância. Quanto mais longe, mais demorado<br> é para teletransporte ocorrer.Como uma benção amaldiçoada,<br> ela não pode ser sobreposta por deuses menores, mas lhe causa<br> um prejuízo. Sempre após um teletransporte parte de sua<br> essência é deixada de lado, perde 10% da vida e mana máxima<br> pelo resto da mesa para cada teletransporte realizado.<br>
+                  <br></span>
+                  <hr/>
+        <div class="carrossel owl-carousel">
+          <div class="conquista">
+              <div class="conquistaCaixa">
+              </div>
+              
+          </div>
+</div>
+        <br>
+      </div>
+    </div>
+
+    <div class="modal-overlay active">
+            <div class="modal">
+                <h2>MODIFICAR VIDA</h2>
+                <hr>
+                <form id="changeLife">
+                    <span class="modalspan">Atual</span>
+                    <input class="modalinput" type="number" name="current" id="lifeCurrent" min="0">
+
+                    <span class="modalspan">Máximo</span>
+                    <input class="modalinput" type="number" name="max" id="lifeMax" min="0">
+                    <input class="modalbutton" type="submit" value="Salvar">
+                </form>
+            </div>
+        </div>
+        <div class="fab"  ontouchstart="">
+          <button class="main" onclick="openModal('dv-modal1')" >
+          </button>
+        </div>
+        <div id="dv-modal1" class="modal">
+          <div class="modal-content-inv">
+            <div class="modal-header">
+              <img src="fechar.png" class="close" id="close-modal" onclick="closeModall('dv-modal1')">
+            <h1>Inventario</h1>
+            </div>
+            <div class="modal-body">
+                <div class="modal-armas">
+                  <br>
+                  <h1 class="stitulo-armas">Armas</h1>
+                  <br>
+                  <h2 class="titulo-armas">Zanpakutuo: Shi no kage</h2>
+                  <hr/>
+                  <p class="armas-info">Dano: +20 quando estiver sendo usada.<br>
+                    Uma espada que representa o seu poder de shinigami.
+                    <br><br>
+                    <b>Shikai: Shi no kage:</b><br>
+                    Dano: +40 quando estiver sendo usada.<br>
+                    efeito: A espada se transforma em uma cobra negra espiritual que fica envolta (do pesocoço ou do braço, o que ficar mais estiloso). A cada contato físico com o alvo voce pode drenar 10% da mana do adversário causando dano equivalente à metade da mana absorvida. A cada turno pode transformar 10% da sua vida em mana. A cobra também lhe concede uma reserva de mana a mais, podendo armazenar até 50% da sua mana máxima com um extra, ademais pode fazer ataques à distancia como um ataque físico e usar a maestria de catalizador como base para o dano.<br><br>
+                    <b>Bankai: Hisomu jigen:</b> <br>
+                    Dano +60 quando usada.<br>
+                    A cobra de sua shikai toma uma forma maior e fica com aspectos roxos em suas escamas, a cobra desaparece do plano físico e espiritual, sendo então se espreitando entre os dois planos aparecendo somente quando ordenada, e a sua espada troca de pele, enrigecendo-se e "perdendo" seu alcance. A cobra possui dois movimentos que podem ser considerados marcantes, somente 1 movimento pode ser usado por cobra em um turno, são eles:<br><br>
+
+<b>Espreita:</b> Assim que realizar um ataque com sua espada a cobra rasgará o véu entre os planos para perseguir o seu ataque na mesmo sentido que seu ataque, como uma espécie de extensão de ataque. Para o acerto da cobra role DES + P.M (o ataque não pode ser bloqueado, apenas esquivado). O dano desse ataque é 200% do seu dano como dano espiritual +50% de dano de morte.
+<br><br>
+<b>Disritmia:</b> A cobra cospe uma névoa de veneno que insinua a morte, a área do ataque é "Médio" e causa dano equivalente a 100% do seu dano como morte + a sua vida perdida em todo o combate, tem 100% de chance de causar P.M como dano necrótico por 3 turnos.
+<br><br>
+<b>Meretseguer:</b> Uma segunda cobra, branca, surge e lhe protege garantindo a sua defesa. A mesma possui movimentos diferentes focados em suporte. Sempre que for atacado a cobra realiza um ataque (O acerto é: DES + CON, o dano é: 100% do seu ataque como dano espirítual + 25% de dano sagrado)
+<br><br>
+<b>Inochi no ibuki:</b> Gasta uma ação, mas ainda pode atacar com a outra cobra, e cura uma quantidade igual 25% do dano recebido em uma área média.
+<br><br>
+<b>Shi o yokeru:</b> Deixa sua forma para se transformar em uma fina camada de escamas que protegem voce. Gasta 25% da sua mana atual para ganhar 50% da mana máxima como vida extra, enquanto nessa forma não pode usar a cobra branca.
+
+                  </p>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum</h2>
+                  <hr/>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum</h2>
+                  <hr/>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum</h2>
+                  <hr/>
+                 
+                  <br>
+                  <h2 class="titulo-armas">Nenhum</h2>
+                  <hr/>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum</h2>
+                  <hr/>
+                </div>
+                <br><br>
+                <div class="outros">
+                  <h1 class="stitulo-armas">outros</h1>
+                  <br><br>
+                  <h2 class="titulo-armas">Cúmulo de Ank / 01x /Carga: 250.000</h2>
+                  <hr/>
+                  <p class="armas-info"> Um orb arquitetado por Kurumi hellsing enquanto governanta do egito, na qual ordenou ao povo escravizado ajudassem-na nesse projeto, ja que precisava de sacrifícios... este ítem absorve e guarda qualquer elemento ou energia posto nele (ps: Não pode ser usado em batalha). Possui uma carga ainda indeterminada.</p>
+                  <br>
+                  <h2 class="titulo-armas">Teara do milênio / 01x</h2>
+                  <hr/>
+                  <p class="armas-info"> Uma Teara antiga que pertencia ao faraó. A teara possui a capacidade de ver o futuro e presenciar o passado.<br>Mecânica: Se usado para prever o futuro ela mostrará o futuro na visão do mestre, tal esse podendo ser alterado, porém incerto quando se trata de jogadores e Npc'S que estão acima do destino.</p>
+                  <br>
+                  <h2 class="titulo-armas">Enigma do milênio / 01x</h2>
+                  <hr/>
+                  <p class="armas-info"> Um colar dourado com uma grande pirâmide invertida pendurado, este ítem guardava a alma do faraó e contém um poder misterioso desconhecido por todos incluindo o mesmo. Este ítem lhe permite receber a ajuda do grande faraó, bem como parte de seu antigo poder, o mundo das trevas.</p>
+                  <br>
+                  <h2 class="titulo-armas">Runas: o básico dos selos / 01x</h2>
+                  <hr/>
+                  <p class="armas-info"> Um livro velho pertencente a um antigo mago capaz de invocar diversas coisas e utilizava do poder das runas para fortalecer e encantar tudo aquilo que quisesse. Este livro lhe concede o básico dos conhecimentos, lhe ensinando sobre as existências de todas as runas, além disso lhe ensina a fazer a runa Lace. A runa lace serve para se colocar em objetos, tal runa possui multiplas funções simples, tal como uma pedra levitar, um bule servir algo ou uma porta a abrir e ...</p>
+                  <br>
+                  <h2 class="titulo-armas">Doce contra-maldição / 5x</h2>
+                  <hr/>
+                  <p class="armas-info"> Um doce meio azul clarinho que acalma maldições.</p>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum / 0x</h2>
+                  <hr/>
+                  <p class="items"></p>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum / 0x</h2>
+                  <hr/>
+                  <p class="items"></p>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum / 0x</h2>
+                  <hr/>
+                  <p class="items"></p>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum / 0x</h2>
+                  <hr/>
+                  <p class="items"></p>
+                  <br>
+                  <h2 class="titulo-armas">Nenhum / 0x</h2>
+                  <hr/>
+                  <p class="items"></p>
+                  <br>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-inv" onclick="closeModall('dv-modal1')">Fechar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="fichagg.js"></script>
+  </body>
+</html>
